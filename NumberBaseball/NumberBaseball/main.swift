@@ -28,7 +28,7 @@ func updateStrikeAndBallCount() {
     strikeCount = 0
     ballCount = 0
     
-    for index in 0...2 {
+    for index in 0..<lengthOfNumbers {
         if numbersByUser[index] == numbersByComputer[index] {
             strikeCount += 1
         } else if numbersByComputer.contains(numbersByUser[index]) {
@@ -106,7 +106,7 @@ func getUserNumbers() -> [Int] {
 }
 
 func validate(_ userInput: String) -> [Int]? {
-    let separatedUserInput = userInput.components(separatedBy: " ")
+    let separatedUserInput = userInput.components(separatedBy: " ").filter({ $0.isEmpty == false })
     let numberOnlyUserInput = separatedUserInput.compactMap({ Int($0) })
     
     guard numberOnlyUserInput.count == separatedUserInput.count else {
